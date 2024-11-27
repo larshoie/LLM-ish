@@ -200,7 +200,8 @@ class Typewriter {
 
     if(string) {
       const { stringSplitter } = this.options || {};
-      const characters = typeof stringSplitter === 'function' ? stringSplitter(string) : string.split('');
+      //const characters = typeof stringSplitter === 'function' ? stringSplitter(string) : string.split(''); // HACK TO GET JUST WORDS
+      const characters = typeof stringSplitter === 'function' ? stringSplitter(string) : string.split(' ').map(word => word + ' ');
       this.typeCharacters(characters, node);
     }
 
